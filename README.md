@@ -6,10 +6,42 @@ The opening hours model for a business.
 - <https://schema.org/openingHours>
 - <https://schema.org/OpeningHoursSpecification>
 
-## API
+## Installation
+
+```sh
+$ npm install mgscarp-openinghours --save
+```
+
+## Usage
+
+~~~js
+var OpeningHours = require('mgscarp-openinghours');
+
+var data = [{
+        dayOfWeek: 'Monday',
+        hours: [{
+            opens: '15:00',
+            closes: '21:00'
+        }]
+    }, {
+        dayOfWeek: 'Monday',
+        hours: [{
+            opens: '15:00',
+            closes: '21:00'
+        }]
+    }];
+
+var hours = new OpeningHours(data);
+
+// returns 'Mo,Tu 15:00-21:00'
+hours.serialize(); 
+~~~
 
 ## Tests
 
-# License
+Run tests with Mocha
 
-The MIT License.
+~~~sh
+$ make test
+~~~
+
