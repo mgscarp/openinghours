@@ -67,12 +67,9 @@ describe('OpeningHours', function() {
     });
 
     it('should initialize correctly', function(){
-         openinghours = new OpeningHours(data);
+         openinghours = new OpeningHours(data, { parse: true });
 
-         var mondayHours = [
-                { opens: '10:00', closes: '14:00' },
-                { opens: '15։00', closes: '21:00' }
-            ];
+         var mondayHours = '10:00-14:00 00:00-21:00';
 
          assert.deepEqual(openinghours.get('Monday').hours.serialize(), mondayHours);
     });
