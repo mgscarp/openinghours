@@ -11,7 +11,7 @@ data = [
             'opens': '10:00',
             'closes': '14:00'
         }, {
-            'opens': '15։00',
+            'opens': '15:00',
             'closes': '21:00'
         }],
     }, {
@@ -20,7 +20,7 @@ data = [
             'opens': '10:00',
             'closes': '14:00'
         }, {
-            'opens': '15։00',
+            'opens': '15:00',
             'closes': '21:00'
         }],
     }, {
@@ -29,7 +29,7 @@ data = [
             'opens': '10:00',
             'closes': '14:00'
         }, {
-            'opens': '15։00',
+            'opens': '15:00',
             'closes': '21:00'
         }],
     }, {
@@ -38,7 +38,7 @@ data = [
             'opens': '10:00',
             'closes': '14:00'
         }, {
-            'opens': '15։00',
+            'opens': '15:00',
             'closes': '21:00'
         }],
     }, {
@@ -47,7 +47,7 @@ data = [
             'opens': '10:00',
             'closes': '14:00'
         }, {
-            'opens': '15։00',
+            'opens': '15:00',
             'closes': '21:00'
         }],
     }, {
@@ -66,11 +66,11 @@ describe('OpeningHours', function() {
         assert.ok(OpeningHours);
     });
 
-    it('should initialize correctly', function(){
+    it('should serialize correctly', function(){
          openinghours = new OpeningHours(data, { parse: true });
 
-         var mondayHours = '10:00-14:00 00:00-21:00';
+         var result = 'Mo-Fr 10:00-14:00 15:00-21:00; Sa 10:00-14:00';
 
-         assert.deepEqual(openinghours.get('Monday').hours.serialize(), mondayHours);
+         assert.deepEqual(openinghours.serialize(), result);
     });
 });
