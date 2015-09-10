@@ -1,6 +1,6 @@
 {
   "name": "mgscarp-openinghours",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "The opening hours model for a business.",
   "main": "index.js",
   "scripts": {
