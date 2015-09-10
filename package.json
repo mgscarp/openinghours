@@ -15,7 +15,8 @@
     "ampersand-state": "^4.5.6",
     "ampersand-collection": "^1.4.5",
     "moment": "^2.10.6",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "mgscarp-openinghours-serialize": "0.0.1"
   },
   "devDependencies": {
     "mocha": "^2.3.0"

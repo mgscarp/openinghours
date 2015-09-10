@@ -4,6 +4,10 @@ var fs = require('fs');
 
 var OpeningHours = require('../lib/openinghours.js');
 
+
+var VOCABULARY = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+
 var data = {
         sane    : require('./assets/sane.json'),
         longEng : fs.readFileSync(__dirname  + '/assets/long-english.txt', 'utf8')
@@ -29,7 +33,7 @@ describe('Parse', function(){
     var openinghours;
 
     it('should accept raw test', function () {
-         openinghours = new OpeningHours(data.longEng, { parse: true });
+         openinghours = new OpeningHours(data.longEng, { parse: true, vocabulary: VOCABULARY });
 
          var result = 'Mo-Fr 10:00-14:00 15:00-21:00; Sa 10:00-14:00';
 
