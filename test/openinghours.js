@@ -1,63 +1,17 @@
 var assert = require('assert');
 
+var fs = require('fs');
+
 var OpeningHours = require('../lib/openinghours.js');
 
-var data;
 
-data = [
-    {
-        dayOfWeek: 'Monday',
-        hours: [{
-            'opens': '10:00',
-            'closes': '14:00'
-        }, {
-            'opens': '15:00',
-            'closes': '21:00'
-        }],
-    }, {
-        dayOfWeek: 'Tuesday',
-        hours: [{
-            'opens': '10:00',
-            'closes': '14:00'
-        }, {
-            'opens': '15:00',
-            'closes': '21:00'
-        }],
-    }, {
-        dayOfWeek: 'Wednesday',
-        hours: [{
-            'opens': '10:00',
-            'closes': '14:00'
-        }, {
-            'opens': '15:00',
-            'closes': '21:00'
-        }],
-    }, {
-        dayOfWeek: 'Thursday',
-        hours: [{
-            'opens': '10:00',
-            'closes': '14:00'
-        }, {
-            'opens': '15:00',
-            'closes': '21:00'
-        }],
-    }, {
-        dayOfWeek: 'Friday',
-        hours: [{
-            'opens': '10:00',
-            'closes': '14:00'
-        }, {
-            'opens': '15:00',
-            'closes': '21:00'
-        }],
-    }, {
-        dayOfWeek: 'Saturday',
-        hours: [{
-            'opens': '10:00',
-            'closes': '14:00'
-        }]
-    }
-];
+var VOCABULARY = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+
+var data = {
+        sane    : require('./assets/sane.json'),
+        longEng : fs.readFileSync(__dirname  + '/assets/long-english.txt', 'utf8')
+    };
 
 describe('OpeningHours', function() {
     var openinghours;
@@ -67,7 +21,19 @@ describe('OpeningHours', function() {
     });
 
     it('should serialize correctly', function(){
-         openinghours = new OpeningHours(data, { parse: true });
+         openinghours = new OpeningHours(data.sane, { parse: true });
+
+         var result = 'Mo-Fr 10:00-14:00 15:00-21:00; Sa 10:00-14:00';
+
+         assert.deepEqual(openinghours.serialize(), result);
+    });
+});
+
+describe('Parse', function(){
+    var openinghours;
+
+    it('should accept raw test', function () {
+         openinghours = new OpeningHours(data.longEng, { parse: true, vocabulary: VOCABULARY });
 
          var result = 'Mo-Fr 10:00-14:00 15:00-21:00; Sa 10:00-14:00';
 
