@@ -24,12 +24,8 @@ describe('OpeningHours', function() {
 
          assert.deepEqual(openinghours.serialize(), result);
     });
-});
 
-describe('Parse', function(){
-    var openinghours;
-
-    it('should accept raw test', function () {
+    it('should parse raw data', function () {
          openinghours = new OpeningHours(data.longEng, {
             parse: true,
             vocabulary: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
